@@ -8,6 +8,6 @@ namespace Service
 {
     public interface IObserverMedecin
     {
-        void NotifierNouveauPatient(Patient.Patient patient);
+        void NotifierNouveauPatient(DllPatient.Model.Patient patient);
     }
 }

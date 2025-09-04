@@ -17,7 +17,7 @@ namespace Service
             Salle = salle;
         }
 
-        public void NotifierNouveauPatient(Patient.Patient patient)
+        public void NotifierNouveauPatient(DllPatient.Model.Patient patient)
         {
             if (patient == null)
                 Console.WriteLine($"[Médecin {Nom} - Salle {Salle}] Aucun patient en attente.");
