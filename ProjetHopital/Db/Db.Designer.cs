@@ -36,6 +36,7 @@
             this.sqlCo.ConnectionString = "Data Source=DESKTOP-4D26RH5\\SQLEXPRESS;Initial Catalog=ajc_hospital;Integrated Se" +
     "curity=True";
             this.sqlCo.FireInfoMessageEventOnUserErrors = false;
+            this.sqlCo.InfoMessage += new System.Data.SqlClient.SqlInfoMessageEventHandler(this.sqlCo_InfoMessage);
             // 
             // sqlCmd
             // 
