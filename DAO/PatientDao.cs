@@ -1,5 +1,5 @@
 ﻿using DllPatient.Model;
-using ProjetHopital.Db;
+using GestionDatabase.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;

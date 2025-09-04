@@ -7,3 +7,4 @@ C:\Users\Theo\source\repos\Ajc-Hospital\DllPatient\bin\Debug\Patient.pdb
 C:\Users\Theo\source\repos\Ajc-Hospital\DllPatient\obj\Debug\DllPatient.csproj.CoreCompileInputs.cache
 C:\Users\Theo\source\repos\Ajc-Hospital\DllPatient\obj\Debug\Patient.dll
 C:\Users\Theo\source\repos\Ajc-Hospital\DllPatient\obj\Debug\Patient.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DllPatient\obj\Debug\DllPatient.csprojAssemblyReference.cache

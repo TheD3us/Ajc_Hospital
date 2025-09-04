@@ -16,12 +16,14 @@ namespace Service
 
         static void testService()
         {
+
+            Hospital H = Hospital.Hopital();
             var salle1 = new Salle(1, "Dr. Dupont");
             var salle2 = new Salle(2, "Dr. Martin");
 
-            Hospital.Hopital.AjouterPatient(new Patient(1, "Durand", "Paul", 20, "0203040506", "18 rue Dupond"));
-            Hospital.Hopital.AjouterPatient(new Patient(2, "Lefevre", "Sophie", 20, "0203040506", "18 rue Dupond"));
-            Hospital.Hopital.AjouterPatient(new Patient(3, "Bernard", "Luc", 20, "0203040506", "18 rue Dupond"));
+            H.AjouterPatient(new Patient(1, "Durand", "Paul", 20, "0203040506", "18 rue Dupond"));
+            H.AjouterPatient(new Patient(2, "Lefevre", "Sophie", 20, "0203040506", "18 rue Dupond"));
+            H.AjouterPatient(new Patient(3, "Bernard", "Luc", 20, "0203040506", "18 rue Dupond"));
 
             bool continuer = true;
             while (continuer)
@@ -40,7 +42,7 @@ namespace Service
                 switch (choix)
                 {
                     case "1":
-                        Hospital.Hopital.AfficherFile();
+                        H.AfficherFile();
                         break;
                     case "2":
                         salle1.AfficherProchainPatient();

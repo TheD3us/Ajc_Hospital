@@ -12,6 +12,7 @@ namespace Service
         public int Numero { get; }
         public string Medecin { get; }
         private Patient current;
+        Hospital H = Hospital.Hopital();
 
         public Salle(int numero, string medecin)
         {
@@ -28,7 +29,7 @@ namespace Service
                 return;
             }
 
-            var p = Hospital.Hopital.EntrerProchainPatient();
+            var p = H.EntrerProchainPatient();
             if (p != null)
             {
                 current = p;
@@ -56,13 +57,13 @@ namespace Service
         // Affiche la file d’attente actuelle depuis l’hôpital
         public void AfficherFile()
         {
-            Hospital.Hopital.AfficherFile();
+            H.AfficherFile();
         }
 
         // Affiche le prochain patient sans le retirer de la file
         public void AfficherProchainPatient()
         {
-            var prochain = Hospital.Hopital.ProchainPatient();
+            var prochain = H.ProchainPatient();
             if (prochain != null)
             {
                 Console.WriteLine($"[Salle {Numero}] Prochain patient : {prochain.Nom} {prochain.Prenom}");

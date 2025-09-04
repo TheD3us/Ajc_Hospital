@@ -1,12 +1,12 @@
 ﻿using DllAuthentification.Model;
-using ProjetHopital.Db;
+using GestionDatabase.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientDao
+namespace DAO
 {
     public class AuthentificationDao
     {
