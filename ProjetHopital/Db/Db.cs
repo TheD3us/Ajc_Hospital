@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DllVisites;
 using DllPatient;
 using DllPatient.Model;
+using DllAuthentification.Model;
 
 namespace ProjetHopital.Db
 {
@@ -174,9 +175,99 @@ namespace ProjetHopital.Db
 
 
         //Partie Authentification
+        // Authentifie un utilisateur par login et mot de passe.
+        // Retourne l’objet Authentification ou null si échec.
+        public Authentification SelectAuthentificationByLoginPassword(string login, string password)
+        {
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification
+                                   WHERE login = @login AND password = @password";
 
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", login);
+            sqlCmd.Parameters.AddWithValue("@password", password);
 
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            Authentification auth = null;
+
+            if (reader.Read())
+            {
+                auth = new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                };
+            }
+
+            sqlCo.Close();
+            return auth;
+        }
+
+        // Récupère tous les utilisateurs.
+        public List<Authentification> SelectAllAuthentifications()
+        {
+            var result = new List<Authentification>();
+
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification";
+
+            sqlCmd.Parameters.Clear();
+
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                result.Add(new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                });
+            }
+
+            sqlCo.Close();
+            return result;
+        }
+
+        // Récupère un utilisateur par login.
+        public Authentification SelectAuthentificationByLogin(string login)
+        {
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification
+                                   WHERE login = @login";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", login);
+
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            Authentification auth = null;
+
+            if (reader.Read())
+            {
+                auth = new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                };
+            }
+
+            sqlCo.Close();
+            return auth;
+        }
     }
-
-    
 }
+
+
