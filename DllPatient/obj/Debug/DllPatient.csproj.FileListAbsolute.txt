@@ -1,0 +1,4 @@
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllPatient\obj\Debug\DllPatient.csprojAssemblyReference.cache
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllPatient\obj\Debug\DllPatient.csproj.CoreCompileInputs.cache
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllPatient\obj\Debug\Patient.dll
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllPatient\obj\Debug\Patient.pdb

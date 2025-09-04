@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{360D6104-60CF-4464-B7E4-BA0E83C889F2}</ProjectGuid>
+    <ProjectGuid>{114951D1-3C89-48FF-A341-EE7AC53F9AE3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DllVisites</RootNamespace>
-    <AssemblyName>DllVisites</AssemblyName>
+    <RootNamespace>PatientDao</RootNamespace>
+    <AssemblyName>PatientDao</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,12 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Visites.cs" />
+    <Compile Include="PatientDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-=======
-    <Compile Include="Model\Visites.cs" />
->>>>>>> 72effe13301f311e70f7cdb94d3c5a744dd9b7fe
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DllPatient\DllPatient.csproj">
+      <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
+      <Name>DllPatient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetHopital\ProjetHopital.csproj">
+      <Project>{aad55cac-3bdb-4058-987a-84615f1a4e1a}</Project>
+      <Name>ProjetHopital</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
