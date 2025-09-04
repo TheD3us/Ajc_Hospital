@@ -4,3 +4,9 @@ C:\Users\Theo\source\repos\Ajc-Hospital\DllVisites\obj\Debug\DllVisites.csprojAs
 C:\Users\Theo\source\repos\Ajc-Hospital\DllVisites\obj\Debug\DllVisites.csproj.CoreCompileInputs.cache
 C:\Users\Theo\source\repos\Ajc-Hospital\DllVisites\obj\Debug\DllVisites.dll
 C:\Users\Theo\source\repos\Ajc-Hospital\DllVisites\obj\Debug\DllVisites.pdb
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\bin\Debug\DllVisites.dll
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\bin\Debug\DllVisites.pdb
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.csprojAssemblyReference.cache
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.csproj.CoreCompileInputs.cache
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.dll
+C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.pdb
