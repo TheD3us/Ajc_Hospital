@@ -8,6 +8,6 @@ namespace Service
 {
     public interface IObserverSecretaire
     {
-        void NotifierChangementFile(List<Patient.Patient> fileAttente);
+        void NotifierChangementFile(List<DllPatient.Model.Patient> fileAttente);
     }
 }

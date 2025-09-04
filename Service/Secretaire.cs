@@ -16,7 +16,7 @@ namespace Service
             Nom = nom;
         }
 
-        public void NotifierChangementFile(List<Patient.Patient> fileAttente)
+        public void NotifierChangementFile(List<DllPatient.Model.Patient> fileAttente)
         {
             Console.WriteLine($"\n[Secrétaire {Nom}] Mise à jour de la file :");
             if (fileAttente.Count == 0)
