@@ -61,17 +61,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ProjectReference Include="..\DllPatient\DllPatient.csproj">
-      <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
-=======
     <ProjectReference Include="..\DllAuth\DllAuthentification\DllAuthentification.csproj">
       <Project>{b9a5b2d9-5cd8-4fce-932e-9040ecdd8208}</Project>
       <Name>DllAuthentification</Name>
     </ProjectReference>
     <ProjectReference Include="..\DllPatient\DllPatient.csproj">
       <Project>{666013b6-5fa3-43be-94e6-6c21d4141696}</Project>
->>>>>>> 72effe13301f311e70f7cdb94d3c5a744dd9b7fe
       <Name>DllPatient</Name>
     </ProjectReference>
     <ProjectReference Include="..\DllVisites\DllVisites.csproj">
