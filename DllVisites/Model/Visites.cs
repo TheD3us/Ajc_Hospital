@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DllVisites
 {
-    class Visites
+    public class Visites
     {
         int idpatient;
         DateTime date;
