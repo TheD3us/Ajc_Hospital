@@ -1,0 +1,6 @@
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\bin\Debug\DllAuthentification.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\bin\Debug\DllAuthentification.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.csprojAssemblyReference.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.csproj.CoreCompileInputs.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.pdb
