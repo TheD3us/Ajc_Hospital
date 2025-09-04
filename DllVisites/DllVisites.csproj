@@ -43,10 +43,6 @@
   <ItemGroup>
     <Compile Include="Model\Visites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-=======
-    <Compile Include="Model\Visites.cs" />
->>>>>>> 72effe13301f311e70f7cdb94d3c5a744dd9b7fe
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
