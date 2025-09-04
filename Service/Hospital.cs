@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DllPatient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Service
         // singleton
         private static Hospital hopital = null;
 
-        private List<Patient.Patient> fileAttente = new List<Patient.Patient>();
+        private List<Patient> fileAttente = new List<Patient>();
 
         private List<IObserverMedecin> medecins = new List<IObserverMedecin>();
         private List<IObserverSecretaire> secretaires = new List<IObserverSecretaire>();
@@ -30,7 +31,7 @@ namespace Service
             }
         }
 
-        public void AjouterPatient(Patient.Patient p) { }
+        public void AjouterPatient(Patient p) { }
 
         //public Patient.Patient EntrerProchainPatient() { }
 

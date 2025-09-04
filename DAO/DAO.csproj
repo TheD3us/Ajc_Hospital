@@ -43,11 +43,16 @@
   <ItemGroup>
     <Compile Include="PatientDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisiteDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DllPatient\DllPatient.csproj">
       <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
       <Name>DllPatient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetHopital\ProjetHopital.csproj">
+      <Project>{aad55cac-3bdb-4058-987a-84615f1a4e1a}</Project>
+      <Name>ProjetHopital</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

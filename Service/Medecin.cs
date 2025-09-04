@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DllPatient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Service
             Salle = salle;
         }
 
-        public void NotifierNouveauPatient(Patient.Patient patient)
+        public void NotifierNouveauPatient(Patient patient)
         {
             if (patient == null)
                 Console.WriteLine($"[Médecin {Nom} - Salle {Salle}] Aucun patient en attente.");

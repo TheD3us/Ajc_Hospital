@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DllPatient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Service
 {
     public interface IObserverMedecin
     {
-        void NotifierNouveauPatient(Patient.Patient patient);
+        void NotifierNouveauPatient(Patient patient);
     }
 }
