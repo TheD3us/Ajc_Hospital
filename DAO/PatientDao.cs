@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientDao
+namespace DAO
 {
     public class PatientDao
     {
