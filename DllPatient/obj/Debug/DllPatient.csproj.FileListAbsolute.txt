@@ -1,0 +1,5 @@
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet\DllPatient\bin\Debug\Patient.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet\DllPatient\bin\Debug\Patient.pdb
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet\DllPatient\obj\Debug\DllPatient.csproj.CoreCompileInputs.cache
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet\DllPatient\obj\Debug\Patient.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet\DllPatient\obj\Debug\Patient.pdb
