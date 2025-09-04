@@ -1,0 +1,14 @@
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\PatientDao.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\PatientDao.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\Patient.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\ProjetHopital.exe
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\DllVisites.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\Patient.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\ProjetHopital.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\ProjetHopital.exe.config
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\bin\Debug\DllVisites.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\obj\Debug\PatientDao.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\DAO\obj\Debug\PatientDao.pdb
