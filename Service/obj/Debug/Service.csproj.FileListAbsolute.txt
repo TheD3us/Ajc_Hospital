@@ -1,0 +1,14 @@
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.csprojAssemblyReference.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\Service.exe.config
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\Service.exe
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\Service.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\DllAuthentification.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\DllVisites.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\Patient.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\DllAuthentification.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\Patient.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\DllVisites.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.csproj.CopyComplete
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.exe
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.pdb
