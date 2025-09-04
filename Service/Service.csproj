@@ -49,19 +49,24 @@
     <Compile Include="Medecin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salle.cs" />
     <Compile Include="Secretaire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{114951D1-3C89-48FF-A341-EE7AC53F9AE3}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DllAuth\DllAuthentification\DllAuthentification.csproj">
       <Project>{b9a5b2d9-5cd8-4fce-932e-9040ecdd8208}</Project>
       <Name>DllAuthentification</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DllPatient\Patient.csproj">
-      <Project>{666013b6-5fa3-43be-94e6-6c21d4141696}</Project>
-      <Name>Patient</Name>
+    <ProjectReference Include="..\DllPatient\DllPatient.csproj">
+      <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
+      <Name>DllPatient</Name>
     </ProjectReference>
     <ProjectReference Include="..\DllVisites\DllVisites.csproj">
       <Project>{360d6104-60cf-4464-b7e4-ba0e83c889f2}</Project>

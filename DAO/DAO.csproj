@@ -41,17 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthentificationDao.cs" />
     <Compile Include="PatientDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisiteDao.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DllAuth\DllAuthentification\DllAuthentification.csproj">
+      <Project>{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}</Project>
+      <Name>DllAuthentification</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DllPatient\DllPatient.csproj">
       <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
       <Name>DllPatient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProjetHopital\ProjetHopital.csproj">
-      <Project>{aad55cac-3bdb-4058-987a-84615f1a4e1a}</Project>
-      <Name>ProjetHopital</Name>
+    <ProjectReference Include="..\DllVisites\DllVisites.csproj">
+      <Project>{360D6104-60CF-4464-B7E4-BA0E83C889F2}</Project>
+      <Name>DllVisites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GestionDatabase\GestionDatabase.csproj">
+      <Project>{B3F5881C-5083-4B58-94E3-5C92FBEEDC26}</Project>
+      <Name>GestionDatabase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

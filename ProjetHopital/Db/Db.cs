@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DllVisites;
 using DllPatient;
 using DllPatient.Model;
+using DllAuthentification.Model;
 
 namespace ProjetHopital.Db
 {
@@ -25,6 +26,11 @@ namespace ProjetHopital.Db
             InitializeComponent();
         }
 
+        private void sqlCo_InfoMessage(object sender, System.Data.SqlClient.SqlInfoMessageEventArgs e)
+        {
+
+        }
+
         //Partie Visite
         public List<Visites> selectAllVisites()
         {
@@ -32,7 +38,7 @@ namespace ProjetHopital.Db
             var reader = sqlCmd.ExecuteReader();
 
             sqlCo.Open();
-            sqlCmd.CommandText = "select idpatient, date, medecin, num-salle, tarif "+
+            sqlCmd.CommandText = "select idpatient, date, medecin, num_salle, tarif "+
                                  "  from visite                                     ";
 
             while(reader.Read())
@@ -40,7 +46,7 @@ namespace ProjetHopital.Db
                 Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()), 
                                         Convert.ToDateTime(reader["date"].ToString()), 
                                         Convert.ToInt32(reader["medecin"].ToString()),
-                                        Convert.ToInt32(reader["num-salle"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
                                         Convert.ToDouble(reader["tarif"].ToString())
                                         );
                 ListeVisite.Add(v);
@@ -50,9 +56,36 @@ namespace ProjetHopital.Db
             return ListeVisite;
         }
 
-        private void sqlCo_InfoMessage(object sender, System.Data.SqlClient.SqlInfoMessageEventArgs e)
+        public void InsertVisite(int IdPatient, DateTime Date, int Medecin, int NumSalle, double Tarif)
         {
+            var reader = sqlCmd.ExecuteReader();
 
+            sqlCo.Open();
+            sqlCmd.CommandText = "insert into visites (idpatient, date, medecin, num_salle, tarif) " +
+                                 "             values ("+IdPatient+","+Date+","+Medecin+",         " +
+                                  +NumSalle + "," + Tarif + ")                                     ";
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void DeleteVisite(int Id)
+        {
+            var reader = sqlCmd.ExecuteReader();
+
+            sqlCo.Open();
+            sqlCmd.CommandText = "delete from visites where id = " + Id;
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void UpdateVisite(int IdPatient, DateTime Date, int Medecin, int NumSalle, double Tarif, int Id)
+        {
+            var reader = sqlCmd.ExecuteReader();
+
+            sqlCo.Open();
+            sqlCmd.CommandText = "update visites set idpatient = " + IdPatient + ", date = " + Date +
+                                 ", medecin = " + Medecin + ", num_salle = " + NumSalle + ", tarif = " +
+                                 Tarif + " where id = " + Id;
         }
 
 
@@ -108,11 +141,133 @@ namespace ProjetHopital.Db
             return patient;
         }
 
+        public void InsertPatient(Patient patient)
+        {
+            sqlCmd.CommandText = "INSERT INTO patients (nom, prenom, age, adresse, telephone) VALUES (@nom, @prenom, @age, @adresse, @telephone)";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@nom", patient.Nom);
+            sqlCmd.Parameters.AddWithValue("@prenom", patient.Prenom);
+            sqlCmd.Parameters.AddWithValue("@age", patient.Age);
+            sqlCmd.Parameters.AddWithValue("@adresse", patient.Adresse);
+            sqlCmd.Parameters.AddWithValue("@telephone", patient.Telephone);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void UpdatePatient(Patient patient)
+        {
+            sqlCmd.CommandText = "UPDATE patients SET nom=@nom, prenom=@prenom, age=@age, adresse=@adresse, telephone=@telephone WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", patient.Id);
+            sqlCmd.Parameters.AddWithValue("@nom", patient.Nom);
+            sqlCmd.Parameters.AddWithValue("@prenom", patient.Prenom);
+            sqlCmd.Parameters.AddWithValue("@age", patient.Age);
+            sqlCmd.Parameters.AddWithValue("@adresse", patient.Adresse);
+            sqlCmd.Parameters.AddWithValue("@telephone", patient.Telephone);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
 
         //Partie Authentification
+        // Authentifie un utilisateur par login et mot de passe.
+        // Retourne l’objet Authentification ou null si échec.
+        public Authentification SelectAuthentificationByLoginPassword(string login, string password)
+        {
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification
+                                   WHERE login = @login AND password = @password";
 
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", login);
+            sqlCmd.Parameters.AddWithValue("@password", password);
 
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            Authentification auth = null;
+
+            if (reader.Read())
+            {
+                auth = new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                };
+            }
+
+            sqlCo.Close();
+            return auth;
+        }
+
+        // Récupère tous les utilisateurs.
+        public List<Authentification> SelectAllAuthentifications()
+        {
+            var result = new List<Authentification>();
+
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification";
+
+            sqlCmd.Parameters.Clear();
+
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                result.Add(new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                });
+            }
+
+            sqlCo.Close();
+            return result;
+        }
+
+        // Récupère un utilisateur par login.
+        public Authentification SelectAuthentificationByLogin(string login)
+        {
+            sqlCmd.CommandText = @"
+                                   SELECT login, password, nom, metier
+                                   FROM Authentification
+                                   WHERE login = @login";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", login);
+
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            Authentification auth = null;
+
+            if (reader.Read())
+            {
+                auth = new Authentification
+                {
+                    Login = reader["login"].ToString(),
+                    Password = reader["password"].ToString(),
+                    Nom = reader["nom"].ToString(),
+                    Metier = Convert.ToInt32(reader["metier"])
+                };
+            }
+
+            sqlCo.Close();
+            return auth;
+        }
     }
-
-    
 }
+
+

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DllPatient.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Service
             Nom = nom;
         }
 
-        public void NotifierChangementFile(List<Patient.Patient> fileAttente)
+        public void NotifierChangementFile(List<Patient> fileAttente)
         {
             Console.WriteLine($"\n[Secrétaire {Nom}] Mise à jour de la file :");
             if (fileAttente.Count == 0)
@@ -32,7 +33,7 @@ namespace Service
             }
         }
 
-        //public void LogArriveePatient(Patient.Patient patient)
+        //public void LogArriveePatient(Patient patient)
         //{
         //    string chemin = "patients.txt";
         //    string ligne = $"{patient.Id}\t{DateTime.Now:dd/MM/yyyy HH:mm}";
