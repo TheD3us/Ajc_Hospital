@@ -11,9 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllPatient", "DllPatient\Dl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetHopital", "ProjetHopital\ProjetHopital.csproj", "{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAO", "DAO", "{66A8F4C6-C639-4D13-911C-E6E1BF7F7DC5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "PatientDao\DAO.csproj", "{114951D1-3C89-48FF-A341-EE7AC53F9AE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{114951D1-3C89-48FF-A341-EE7AC53F9AE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,9 +42,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{114951D1-3C89-48FF-A341-EE7AC53F9AE3} = {66A8F4C6-C639-4D13-911C-E6E1BF7F7DC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {72AA498E-41B1-454A-BD64-5EF79DBD42BF}
