@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.36217.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllVisites", "DllVisites\DllVisites.csproj", "{360D6104-60CF-4464-B7E4-BA0E83C889F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllPatient", "DllPatient\DllPatient.csproj", "{666013B6-5FA3-43BE-94E6-6C21D4141696}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllAuthentification", "DllAuth\DllAuthentification\DllAuthentification.csproj", "{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAO", "DAO", "{90DBF6BB-721B-4F61-B9BD-32151B6C8072}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllPatient", "DllPatient\DllPatient.csproj", "{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetHopital", "ProjetHopital\ProjetHopital.csproj", "{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{114951D1-3C89-48FF-A341-EE7AC53F9AE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,18 +23,22 @@ Global
 		{360D6104-60CF-4464-B7E4-BA0E83C889F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360D6104-60CF-4464-B7E4-BA0E83C889F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360D6104-60CF-4464-B7E4-BA0E83C889F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{666013B6-5FA3-43BE-94E6-6C21D4141696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{666013B6-5FA3-43BE-94E6-6C21D4141696}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{666013B6-5FA3-43BE-94E6-6C21D4141696}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{666013B6-5FA3-43BE-94E6-6C21D4141696}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD55CAC-3BDB-4058-987A-84615F1A4E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114951D1-3C89-48FF-A341-EE7AC53F9AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114951D1-3C89-48FF-A341-EE7AC53F9AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114951D1-3C89-48FF-A341-EE7AC53F9AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114951D1-3C89-48FF-A341-EE7AC53F9AE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
