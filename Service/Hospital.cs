@@ -7,28 +7,26 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    class Hospital
+    public class Hospital
     {
         // singleton
-        private static Hospital hopital = null;
+        static Hospital hopital;
 
         private List<Patient> fileAttente = new List<Patient>();
 
         private List<IObserverMedecin> medecins = new List<IObserverMedecin>();
         private List<IObserverSecretaire> secretaires = new List<IObserverSecretaire>();
 
-        private Hospital() { }
+        protected Hospital() { }
 
-        public static Hospital Hopital
+        public static Hospital Hopital()
         {
-            get
+            if (hopital == null)
             {
-                if (hopital == null)
-                {
-                    hopital = new Hospital();
-                }
-                return hopital;
+                hopital = new Hospital();
             }
+            return hopital;
+
         }
 
         public void AjouterPatient(Patient p)

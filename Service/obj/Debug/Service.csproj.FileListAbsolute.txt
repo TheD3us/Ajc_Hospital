@@ -12,3 +12,7 @@ C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\DllVisites.pdb
 C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.exe
 C:\Users\Theo\source\repos\Ajc-Hospital\Service\obj\Debug\Service.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\PatientDao.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\GestionDatabase.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\PatientDao.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\Service\bin\Debug\GestionDatabase.pdb

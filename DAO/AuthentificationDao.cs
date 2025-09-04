@@ -1,12 +1,12 @@
 ﻿using DllAuthentification.Model;
-using ProjetHopital.Db;
+using GestionDatabase.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientDao
+namespace DAO
 {
     public class AuthentificationDao
     {
@@ -35,6 +35,12 @@ namespace PatientDao
         public Authentification GetUserByLogin(string login)
         {
             return db.SelectAuthentificationByLogin(login);
+        }
+
+        //Récupère id Auth
+        public int GetAuthentificationId(string Nom, int Metier)
+        {
+            return db.GetAuthentificationId(Nom, Metier);
         }
     }
 }
