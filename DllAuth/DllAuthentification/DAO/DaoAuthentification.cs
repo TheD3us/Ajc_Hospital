@@ -10,11 +10,11 @@ namespace DllAuthentification.DAO
 {
     public class DAOAuthentification
     {
-        private readonly string _connectionString;
+        private readonly string connection;
 
         public DAOAuthentification(string connectionString)
         {
-            _connectionString = connectionString;
+            connection = connectionString;
         }
 
         // Authentifie un utilisateur par login et password.
@@ -26,7 +26,7 @@ namespace DllAuthentification.DAO
                 FROM Authentification
                 WHERE login = @login AND password = @password";
 
-            using (var conn = new SqlConnection(_connectionString))
+            using (var conn = new SqlConnection(connection))
             {
                 using (var cmd = new SqlCommand(sql, conn))
                 {
