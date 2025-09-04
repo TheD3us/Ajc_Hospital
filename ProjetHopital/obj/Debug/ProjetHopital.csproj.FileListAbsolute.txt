@@ -1,0 +1,8 @@
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\ProjetHopital.exe.config
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\ProjetHopital.exe
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\ProjetHopital.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.Db.Db.resources
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.csproj.GenerateResource.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.exe
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.pdb
