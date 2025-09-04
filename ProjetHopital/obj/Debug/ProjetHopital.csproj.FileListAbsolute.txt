@@ -20,3 +20,11 @@ C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\ProjetHopital\o
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CopyComplete
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\ProjetHopital\obj\Debug\ProjetHopital.exe
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\ProjetHopital\obj\Debug\ProjetHopital.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\DllAuthentification.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\DllVisites.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\Patient.dll
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\DllAuthentification.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\Patient.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\bin\Debug\DllVisites.pdb
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.csprojAssemblyReference.cache
+C:\Users\Theo\source\repos\Ajc-Hospital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CopyComplete

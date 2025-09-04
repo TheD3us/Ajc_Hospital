@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientDao
+namespace DAO
 {
     public class PatientDao
     {
@@ -33,6 +33,18 @@ namespace PatientDao
         public bool PatientExists(int id)
         {
             return GetPatientById(id) != null;
+        }
+
+        // Ajouter un nouveau patient
+        public void AddPatient(Patient patient)
+        {
+            db.InsertPatient(patient);
+        }
+
+        // Mettre à jour un patient existant
+        public void UpdatePatient(Patient patient)
+        {
+            db.UpdatePatient(patient);
         }
     }
 }

@@ -62,6 +62,13 @@
     <ProjectReference Include="..\DllPatient\DllPatient.csproj">
       <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
       <Name>DllPatient</Name>
+<<<<<<< HEAD
+    </ProjectReference>
+    <ProjectReference Include="..\DllPatient\Patient.csproj">
+      <Project>{666013b6-5fa3-43be-94e6-6c21d4141696}</Project>
+      <Name>Patient</Name>
+=======
+>>>>>>> 57421f9d3f1a5bc72f4d6fd3783ac4bd730af351
     </ProjectReference>
     <ProjectReference Include="..\DllVisites\DllVisites.csproj">
       <Project>{360d6104-60cf-4464-b7e4-ba0e83c889f2}</Project>

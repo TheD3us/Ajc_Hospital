@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DllPatient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,11 @@ namespace Service
         // singleton
         private static Hospital hopital = null;
 
+<<<<<<< HEAD
+        private List<Patient> fileAttente = new List<Patient>();
+=======
         private List<DllPatient.Model.Patient> fileAttente = new List<DllPatient.Model.Patient>();
+>>>>>>> 57421f9d3f1a5bc72f4d6fd3783ac4bd730af351
 
         private List<IObserverMedecin> medecins = new List<IObserverMedecin>();
         private List<IObserverSecretaire> secretaires = new List<IObserverSecretaire>();
@@ -30,10 +35,14 @@ namespace Service
             }
         }
 
+<<<<<<< HEAD
+        public void AjouterPatient(Patient p) { }
+=======
         public void AjouterPatient(DllPatient.Model.Patient p)
         {
             fileAttente.Add(p);
             Console.WriteLine($"Patient {p.Nom} {p.Prenom} ajouté à la file.");
+>>>>>>> 57421f9d3f1a5bc72f4d6fd3783ac4bd730af351
 
             NotifierMedecins();
             NotifierSecretaires();
