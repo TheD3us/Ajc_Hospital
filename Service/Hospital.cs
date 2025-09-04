@@ -12,11 +12,7 @@ namespace Service
         // singleton
         private static Hospital hopital = null;
 
-<<<<<<< HEAD
         private List<Patient> fileAttente = new List<Patient>();
-=======
-        private List<DllPatient.Model.Patient> fileAttente = new List<DllPatient.Model.Patient>();
->>>>>>> 57421f9d3f1a5bc72f4d6fd3783ac4bd730af351
 
         private List<IObserverMedecin> medecins = new List<IObserverMedecin>();
         private List<IObserverSecretaire> secretaires = new List<IObserverSecretaire>();
@@ -35,20 +31,31 @@ namespace Service
             }
         }
 
-<<<<<<< HEAD
-        public void AjouterPatient(Patient p) { }
-=======
-        public void AjouterPatient(DllPatient.Model.Patient p)
+        public void AjouterPatient(Patient p)
         {
             fileAttente.Add(p);
             Console.WriteLine($"Patient {p.Nom} {p.Prenom} ajouté à la file.");
->>>>>>> 57421f9d3f1a5bc72f4d6fd3783ac4bd730af351
 
             NotifierMedecins();
             NotifierSecretaires();
         }
 
-        public DllPatient.Model.Patient EntrerProchainPatient()
+        public void AfficherFile()
+        {
+            if (fileAttente.Count == 0)
+            {
+                Console.WriteLine("La file d’attente est vide.");
+                return;
+            }
+
+            Console.WriteLine("File d’attente actuelle :");
+            foreach (var p in fileAttente)
+            {
+                Console.WriteLine($" - {p.Id} : {p.Nom} {p.Prenom}, {p.Age} ans, Tel={p.Telephone}, Adresse={p.Adresse}");
+            }
+        }
+
+        public Patient EntrerProchainPatient()
         {
 
             if (fileAttente.Count == 0) return null;
@@ -64,7 +71,7 @@ namespace Service
             return patient;
         }
 
-        public DllPatient.Model.Patient ProchainPatient()
+        public Patient ProchainPatient()
         {
             if (fileAttente.Count == 0)
             {
@@ -105,4 +112,3 @@ namespace Service
         }
     }
 }
-
