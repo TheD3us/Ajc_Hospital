@@ -45,8 +45,8 @@ namespace MenuHopital
                         MenuSecretaire(auth);
                         break;
 
-                    case 1 | 2:
-                        MenuMedecin(auth);
+                    case 1 : case 2:
+                        MenuMedecin(auth, null);
                         break;
 
                     default:
@@ -104,7 +104,12 @@ namespace MenuHopital
             int NumSecu;
             bool YesNo;
             Console.WriteLine("Veuillez saisir le numéro de sécurité sociale du patient");
+            Console.WriteLine("0 - Menu Précedent");
             NumSecu = Convert.ToInt32(Console.ReadLine());
+            if (NumSecu == 0)
+            {
+                MenuSecretaire(auth);
+            }
             Patient patient = new PatientDao().GetPatientById(NumSecu);
             if (patient == null)
             {
@@ -137,9 +142,54 @@ namespace MenuHopital
             }
         }
 
-        public static void MenuMedecin(Authentification auth)
+        public static void MenuMedecin(Authentification auth, Salle salleAttribuee)
         {
+            if (salleAttribuee == null)
+            {
+                salleAttribuee = new Salle(auth.Metier, auth);
+            }
+            
+            Hospital H = Hospital.Hopital();
+            Console.WriteLine("Bonjour Dr. " + auth.Nom);
+            Console.WriteLine("-------------------Menu Médecin-------------------");
+            Console.WriteLine("1 - Afficher file d’attente");
+            Console.WriteLine("2 - Afficher prochain patient");
+            Console.WriteLine("3 - Faire entrer patient suivant");
+            Console.WriteLine("4 - Libérer Salle");
+            Console.WriteLine("5 - Sauvegarder visites");
+            Console.WriteLine("6 - Deconnexion");
+            Console.Write("Choix : ");
+            var choix = Console.ReadLine();
 
+            switch (choix)
+            {
+                case "1":
+                    H.AfficherFile();
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "2":
+                    salleAttribuee.AfficherProchainPatient();
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "3":
+                    salleAttribuee.AssignerProchainPatient();
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "4":
+                    salleAttribuee.LibererSalle();
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "5":
+                    salleAttribuee.SauvegarderVisites(null);
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "6":
+                    MenuDepart();
+                    break;
+                default:
+                    Console.WriteLine("Choix invalide.");
+                    break;
+            }
         }
     }
 }

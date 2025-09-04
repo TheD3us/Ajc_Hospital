@@ -36,5 +36,11 @@ namespace DAO
         {
             return db.SelectAuthentificationByLogin(login);
         }
+
+        //Récupère id Auth
+        public int GetAuthentificationId(string Nom, int Metier)
+        {
+            return db.GetAuthentificationId(Nom, Metier);
+        }
     }
 }

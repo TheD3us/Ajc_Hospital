@@ -56,6 +56,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{114951D1-3C89-48FF-A341-EE7AC53F9AE3}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DllAuth\DllAuthentification\DllAuthentification.csproj">
       <Project>{b9a5b2d9-5cd8-4fce-932e-9040ecdd8208}</Project>
       <Name>DllAuthentification</Name>

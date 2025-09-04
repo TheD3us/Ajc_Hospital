@@ -35,13 +35,13 @@ namespace GestionDatabase.Db
         public List<Visites> selectAllVisites()
         {
             List<Visites> ListeVisite = new List<Visites>();
-            var reader = sqlCmd.ExecuteReader();
+            
 
             sqlCo.Open();
             sqlCmd.CommandText = "select idpatient, date, medecin, num_salle, tarif "+
                                  "  from visite                                     ";
-
-            while(reader.Read())
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
             {
                 Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()), 
                                         Convert.ToDateTime(reader["date"].ToString()), 
@@ -58,19 +58,22 @@ namespace GestionDatabase.Db
 
         public void InsertVisite(int IdPatient, DateTime Date, int Medecin, int NumSalle, double Tarif)
         {
-            var reader = sqlCmd.ExecuteReader();
 
             sqlCo.Open();
-            sqlCmd.CommandText = "insert into visites (idpatient, date, medecin, num_salle, tarif) " +
-                                 "             values ("+IdPatient+","+Date+","+Medecin+",         " +
-                                  +NumSalle + "," + Tarif + ")                                     ";
+            sqlCmd.CommandText = "insert into visites (idpatient, date, medecin, num_salle, tarif)    " +
+                                 "             values (@IdPatient, @Date, @Medecin, @NumSalle, @Tarif)";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@IdPatient", IdPatient);
+            sqlCmd.Parameters.AddWithValue("@Date", Date);
+            sqlCmd.Parameters.AddWithValue("@Medecin", Medecin);
+            sqlCmd.Parameters.AddWithValue("@NumSalle", NumSalle);
+            sqlCmd.Parameters.AddWithValue("@Tarif", Tarif);
             sqlCmd.ExecuteNonQuery();
             sqlCo.Close();
         }
 
         public void DeleteVisite(int Id)
         {
-            var reader = sqlCmd.ExecuteReader();
 
             sqlCo.Open();
             sqlCmd.CommandText = "delete from visites where id = " + Id;
@@ -80,12 +83,21 @@ namespace GestionDatabase.Db
 
         public void UpdateVisite(int IdPatient, DateTime Date, int Medecin, int NumSalle, double Tarif, int Id)
         {
-            var reader = sqlCmd.ExecuteReader();
 
             sqlCo.Open();
-            sqlCmd.CommandText = "update visites set idpatient = " + IdPatient + ", date = " + Date +
-                                 ", medecin = " + Medecin + ", num_salle = " + NumSalle + ", tarif = " +
-                                 Tarif + " where id = " + Id;
+            sqlCmd.CommandText = "update visites set idpatient = @Idpatient, date = @Date ," +
+                                 "medecin = @Medecin, num_salle = @NumSalle, tarif = @Tarif" +
+                                 " where id = @Id                                          ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@IdPatient", IdPatient);
+            sqlCmd.Parameters.AddWithValue("@Date", Date);
+            sqlCmd.Parameters.AddWithValue("@Medecin", Medecin);
+            sqlCmd.Parameters.AddWithValue("@NumSalle", NumSalle);
+            sqlCmd.Parameters.AddWithValue("@Tarif", Tarif);
+            sqlCmd.Parameters.AddWithValue("@Id", Id);
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+
         }
 
 
@@ -236,6 +248,30 @@ namespace GestionDatabase.Db
 
             sqlCo.Close();
             return result;
+        }
+
+        public int GetAuthentificationId(string Nom, int Metier)
+        {
+            sqlCmd.CommandText = @"
+                                   select id
+                                   from Authentification
+                                   where nom = @Nom and metier = @Metier ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@Nom", Nom);
+            sqlCmd.Parameters.AddWithValue("@Metier", Metier);
+
+            sqlCo.Open();
+
+            var reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return Convert.ToInt32(reader["id"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         // Récupère un utilisateur par login.
