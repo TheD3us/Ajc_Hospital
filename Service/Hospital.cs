@@ -118,7 +118,7 @@ namespace Service
                     }
                 }
                 Console.WriteLine("Modifications effectuées");
-                new PatientDao().UpdatePatient(Telephone, Adresse, Id);
+                new PatientDao().UpdatePatientParSecretaire(Telephone, Adresse, Id);
             }
             if (Id != 0 && !new PatientDao().PatientExists(Id))
             {
@@ -168,6 +168,94 @@ namespace Service
             // Retourner le patient (sans le retirer de la liste)
             return prochain;
         }
+
+        public void ListeVisiteParDate()
+        {
+            Console.WriteLine("Veuillez saisir le numéro de sécurité sociale du patient");
+            Console.WriteLine("0 - Menu Précedent");
+            int NumSecu = Convert.ToInt32(Console.ReadLine());
+            Patient patient = new PatientDao().GetPatientById(NumSecu);
+            if (NumSecu != 0)
+            {
+                if (patient == null)
+                {
+                    Console.WriteLine("Le numéro {patient.id} ne correspond à aucun patient");
+                }
+                else
+                {
+                    List<Visites> listDate = new VisiteDao().GetVisitesByPatientOrderByDate(NumSecu);
+                    foreach (var v in listDate)
+                        Console.WriteLine($"{v.Date} - Médecin {v.Medecin} - Salle {v.NumSalle} - Tarif {v.Tarif}");
+                }
+            }
+            
+        }
+
+        public void ListeVisiteParMedecin()
+        {
+            Console.WriteLine("Veuillez saisir le numéro de sécurité sociale du patient");
+            Console.WriteLine("0 - Menu Précedent");
+            int NumSecu = Convert.ToInt32(Console.ReadLine());
+            if (NumSecu != 0)
+            {
+                Patient patient = new PatientDao().GetPatientById(NumSecu);
+                if (patient == null)
+                {
+                    Console.WriteLine("Le numéro {patient.id} ne correspond à aucun patient");
+                }
+                else
+                {
+                    List<Visites> listMedecin = new VisiteDao().GetVisitesByPatientOrderByMedecin(NumSecu);
+                    foreach (var v in listMedecin)
+                        Console.WriteLine($"Médecin {v.Medecin} - {v.Date} - Salle {v.NumSalle} - Tarif {v.Tarif}");
+                }
+            }
+        }
+
+        public void NombreTotalDeVisite()
+        {
+            Console.WriteLine("Veuillez saisir le numéro de sécurité sociale du patient");
+            Console.WriteLine("0 - Menu Précedent");
+            int NumSecu = Convert.ToInt32(Console.ReadLine());
+            if (NumSecu != 0)
+            {
+                Patient patient = new PatientDao().GetPatientById(NumSecu);
+                if (patient == null)
+                {
+                    Console.WriteLine("Le numéro {patient.id} ne correspond à aucun patient");
+                }
+                else
+                {
+                    int total = new VisiteDao().CountVisitesByPatient(NumSecu);
+                    Console.WriteLine($"Total visites : {total}");
+                }
+            }
+        }
+
+        public void NombreVisiteEntreDeuxDate()
+        {
+            Console.WriteLine("Veuillez saisir le numéro de sécurité sociale du patient");
+            Console.WriteLine("0 - Menu Précedent");
+            int NumSecu = Convert.ToInt32(Console.ReadLine());
+            if (NumSecu != 0)
+            {
+                Patient patient = new PatientDao().GetPatientById(NumSecu);
+                if (patient == null)
+                {
+                    Console.WriteLine("Le numéro {patient.id} ne correspond à aucun patient");
+                }
+                else
+                {
+                    Console.Write("Date début (yyyy-MM-dd) : ");
+                    DateTime d1 = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Date fin (yyyy-MM-dd) : ");
+                    DateTime d2 = DateTime.Parse(Console.ReadLine());
+                    int count = new VisiteDao().CountVisitesByPatientBetweenDates(NumSecu, d1, d2);
+                    Console.WriteLine($"Visites entre {d1} et {d2} : {count}");
+                }
+            }
+        }
+
 
         public void AddMedecin(IObserverMedecin medecin)
         {

@@ -11,7 +11,7 @@ namespace DllAuthentification.Model
         public string Login { get; set; }
         public string Password { get; set; }
         public string Nom { get; set; }
-        public int Metier { get; set; } // 0 = secrétaire, 1 = médecin salle 1, 2 = médecin salle 2
+        public int Metier { get; set; } // 0 = secrétaire, 1 = médecin salle 1, 2 = médecin salle 2, 3 admin
 
         public Authentification() { }
 

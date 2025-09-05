@@ -41,10 +41,23 @@ namespace DAO
             db.InsertPatient(patient);
         }
 
-        // Mettre à jour un patient existant
-        public void UpdatePatient(string Telephone, string Adresse, int Id)
+        // Mettre à jour un patient existant vesion secretaire
+        public void UpdatePatientParSecretaire(string Telephone, string Adresse, int Id)
         {
-            db.UpdatePatient(Telephone, Adresse, Id);
+            db.UpdatePatientParSecretaire(Telephone, Adresse, Id);
         }
+
+        // Mettre à jour un patient existant
+        public void UpdatePatient(Patient patient)
+        {
+            db.UpdatePatient(patient);
+        }
+
+        // Supprimer un patient existant
+        public void DeletePatient(int id)
+        {
+            db.DeletePatient(id);
+        }
+
     }
 }
