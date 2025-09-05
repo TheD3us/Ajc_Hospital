@@ -42,6 +42,11 @@ namespace DAO
             return db.SelectVisitesByMedecin(IdMedecin);
         }
 
+        public List<Visites> SelectVisitesByPatient(int IdPatient)
+        {
+            return db.SelectVisitesByPatient(IdPatient);
+        }
+
 
     }
 }

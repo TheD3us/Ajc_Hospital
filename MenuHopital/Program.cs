@@ -70,7 +70,8 @@ namespace MenuHopital
             Console.WriteLine("2 - Afficher file d'attente");
             Console.WriteLine("3 - Afficher prochain patient");
             Console.WriteLine("4 - Modifier patient");
-            Console.WriteLine("5 - Deconnexion");
+            Console.WriteLine("5 - Historique patient");
+            Console.WriteLine("6 - Deconnexion");
 
             choix = Convert.ToInt16(Console.ReadLine());
             switch(choix)
@@ -91,6 +92,10 @@ namespace MenuHopital
                     MenuSecretaire(auth);
                     break;
                 case 5:
+                    H.VoirHistoriqueVisitesPatient();
+                    MenuSecretaire(auth);
+                    break;
+                case 6:
                     Console.WriteLine("Au revoir " + auth.Nom);
                     auth = null;
                     MenuDepart();
