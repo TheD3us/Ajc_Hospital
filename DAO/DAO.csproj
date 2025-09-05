@@ -60,7 +60,7 @@
       <Name>DllVisites</Name>
     </ProjectReference>
     <ProjectReference Include="..\GestionDatabase\GestionDatabase.csproj">
-      <Project>{B3F5881C-5083-4B58-94E3-5C92FBEEDC26}</Project>
+      <Project>{b3f5881c-5083-4b58-94e3-5c92fbeedc26}</Project>
       <Name>GestionDatabase</Name>
     </ProjectReference>
   </ItemGroup>

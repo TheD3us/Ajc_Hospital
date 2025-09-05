@@ -43,6 +43,17 @@ namespace DAO
             return db.GetAuthentificationId(Nom, Metier);
         }
 
-       
+        // Ajouter un utilisateur (médecin ou secrétaire)
+        public void AddUtilisateur(Authentification auth)
+        {
+            db.InsertAuthentification(auth);
+        }
+
+        // Supprimer un utilisateur
+        public void DeleteUtilisateur(int id)
+        {
+            db.DeleteAuthentification(id);
+        }
+
     }
 }

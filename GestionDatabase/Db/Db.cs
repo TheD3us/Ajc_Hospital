@@ -72,6 +72,104 @@ namespace GestionDatabase.Db
             sqlCo.Close();
         }
 
+        public List<Visites> GetVisitesBypatientOrderByDate(int patientId)
+        {
+            List<Visites> visites = new List<Visites>();
+
+            sqlCmd.CommandText = @"
+                SELECT idpatient, date, medecin, num_salle, tarif
+                FROM visites
+                WHERE idpatient = @patientId
+                ORDER BY date ASC
+            ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()),
+                                        Convert.ToDateTime(reader["date"].ToString()),
+                                        Convert.ToInt32(reader["medecin"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
+                                        Convert.ToDouble(reader["tarif"].ToString())
+                                        );
+                visites.Add(v);
+            }
+            sqlCo.Close();
+            return visites;
+        }
+
+        public List<Visites> GetVisitesByPatientOrderByMedecin(int patientId)
+        {
+            List<Visites> visites = new List<Visites>();
+
+            sqlCmd.CommandText = @"
+                SELECT v.idpatient, v.date, v.medecin, v.num_salle, v.tarif
+                FROM visites v
+                INNER JOIN Authentification a ON v.medecin = a.id
+                WHERE idpatient = @patientId
+                ORDER BY a.nom ASC
+            ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()),
+                                        Convert.ToDateTime(reader["date"].ToString()),
+                                        Convert.ToInt32(reader["medecin"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
+                                        Convert.ToDouble(reader["tarif"].ToString())
+                                        );
+                visites.Add(v);
+            }
+            sqlCo.Close();
+            return visites;
+        }
+
+        public int CountVisitesByPatientBetweenDates(int patientId, DateTime dateDebut, DateTime dateFin)
+        {
+            sqlCmd.CommandText = @"
+            SELECT COUNT(*) AS nb
+            FROM visites
+            WHERE idpatient = @patientId
+            AND date BETWEEN @dateDebut AND @dateFin
+            ";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+            sqlCmd.Parameters.AddWithValue("@dateDebut", dateDebut);
+            sqlCmd.Parameters.AddWithValue("@dateFin", dateFin);
+
+            sqlCo.Open();
+            int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+            sqlCo.Close();
+            return count;
+        }
+
+        public int CountVisitesByPatient(int patientId)
+        {
+            sqlCmd.CommandText = @"
+            SELECT COUNT(*) AS nb
+            FROM visites
+            WHERE idpatient = @patientId
+            ";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+            int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+            sqlCo.Close();
+            return count;
+        }
+
         public void DeleteVisite(int Id)
         {
 
@@ -228,7 +326,7 @@ namespace GestionDatabase.Db
             sqlCo.Close();
         }
 
-        public void UpdatePatient(string Telephone, string Adresse, int Id)
+        public void UpdatePatientParSecretaire(string Telephone, string Adresse, int Id)
         {
             Patient patient = SelectPatientById(Id);
             sqlCmd.CommandText = "UPDATE patients SET adresse=@adresse, telephone=@telephone WHERE id=@id";
@@ -244,6 +342,33 @@ namespace GestionDatabase.Db
                 Telephone = patient.Telephone;
             }
             sqlCmd.Parameters.AddWithValue("@telephone", Telephone);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void UpdatePatient(Patient patient)
+        {
+            sqlCmd.CommandText = "UPDATE patients SET nom=@nom, prenom=@prenom, age=@age, adresse=@adresse, telephone=@telephone WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", patient.Id);
+            sqlCmd.Parameters.AddWithValue("@nom", patient.Nom);
+            sqlCmd.Parameters.AddWithValue("@prenom", patient.Prenom);
+            sqlCmd.Parameters.AddWithValue("@age", patient.Age);
+            sqlCmd.Parameters.AddWithValue("@adresse", patient.Adresse);
+            sqlCmd.Parameters.AddWithValue("@telephone", patient.Telephone);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void DeletePatient(int id)
+        {
+            sqlCmd.CommandText = "DELETE FROM patients WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", id);
 
             sqlCo.Open();
             sqlCmd.ExecuteNonQuery();
@@ -367,6 +492,34 @@ namespace GestionDatabase.Db
 
             sqlCo.Close();
             return auth;
+        }
+
+        public void InsertAuthentification(Authentification auth)
+        {
+            sqlCmd.CommandText = @"
+        INSERT INTO Authentification (login, password, nom, metier)
+        VALUES (@login, @password, @nom, @metier)";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", auth.Login);
+            sqlCmd.Parameters.AddWithValue("@password", auth.Password);
+            sqlCmd.Parameters.AddWithValue("@nom", auth.Nom);
+            sqlCmd.Parameters.AddWithValue("@metier", auth.Metier);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void DeleteAuthentification(int id)
+        {
+            sqlCmd.CommandText = "DELETE FROM Authentification WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
         }
     }
 }
