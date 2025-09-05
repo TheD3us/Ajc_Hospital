@@ -62,6 +62,21 @@ namespace Service
             }
         }
 
+        //Historique des visites
+        public void VoirHistoriqueVisites()
+        {
+            List<Visites> ListeHistorique = new List<Visites>();
+            int idMedecin =new AuthentificationDao().GetAuthentificationId(Medecin.Nom, Medecin.Metier);
+            ListeHistorique = new VisiteDao().SelectVisitesByMedecin(idMedecin);
+
+            foreach(Visites v in ListeHistorique)
+            {
+                Patient p = new PatientDao().GetPatientById(v.IdPatient);
+
+                Console.WriteLine(p.Nom + " " + p.Prenom + " - " + v.Date + " tarif : "+ v.Tarif);
+            }
+        }
+
         // Libère la salle et permet au prochain patient d'entrer
         public void LibererSalle()
         {

@@ -100,6 +100,35 @@ namespace GestionDatabase.Db
 
         }
 
+        public List<Visites> SelectVisitesByMedecin(int IdMedecin)
+        {
+            List<Visites> ListeVisite = new List<Visites>();
+
+
+            sqlCo.Open();
+            sqlCmd.CommandText = "select idpatient, date, medecin, num_salle, tarif " +
+                                 "  from visites                                    "+
+                                 "where medecin = @Medecin                          ";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@Medecin", IdMedecin);
+
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()),
+                                        Convert.ToDateTime(reader["date"].ToString()),
+                                        Convert.ToInt32(reader["medecin"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
+                                        Convert.ToDouble(reader["tarif"].ToString())
+                                        );
+                ListeVisite.Add(v);
+            }
+
+            sqlCo.Close();
+            return ListeVisite;
+        }
+
 
         //Partie Patient
         public List<Patient> SelectAllPatients()
