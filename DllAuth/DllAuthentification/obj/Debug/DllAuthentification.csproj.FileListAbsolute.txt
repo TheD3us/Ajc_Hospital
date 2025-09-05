@@ -3,3 +3,9 @@ C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\bin\Debug\Dl
 C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.csproj.CoreCompileInputs.cache
 C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.dll
 C:\Users\Theo\source\repos\Ajc-Hospital\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.pdb
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\bin\Debug\DllAuthentification.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\bin\Debug\DllAuthentification.pdb
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.csprojAssemblyReference.cache
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.csproj.CoreCompileInputs.cache
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllAuth\DllAuthentification\obj\Debug\DllAuthentification.pdb

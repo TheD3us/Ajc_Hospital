@@ -16,6 +16,10 @@ namespace MenuHopital
 
         static void Main(string[] args)
         {
+            // deserialisation (option v3)
+            // emplacement de "etatHopital.xml": ~MenuHopital\bin\Debug
+            Hospital.Hopital().ChargerEtat("etatHopital.xml");
+
             MenuDepart();
         }
 
@@ -86,6 +90,8 @@ namespace MenuHopital
                     MenuSecretaire(auth);
                     break;
                 case 4:
+                    //serialisation(option v3)
+                    Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
                     Console.WriteLine("Au revoir " + auth.Nom);
                     auth = null;
                     MenuDepart();
@@ -184,6 +190,8 @@ namespace MenuHopital
                     MenuMedecin(auth, salleAttribuee);
                     break;
                 case "6":
+                    //serialisation(option v3)
+                    Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
                     MenuDepart();
                     break;
                 default:

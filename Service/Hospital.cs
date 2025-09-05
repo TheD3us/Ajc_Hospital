@@ -1,9 +1,11 @@
 ﻿using DllPatient.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Service
 {
@@ -108,5 +110,60 @@ namespace Service
             foreach (var s in secretaires)
                 s.NotifierChangementFile(new List<DllPatient.Model.Patient>(fileAttente));
         }
+
+        public class EtatHopital
+        {
+            public List<Patient> FileAttente { get; set; }
+        }
+
+        public void SauvegarderEtat(string cheminFichier)
+        {
+            try
+            {
+                var etat = new EtatHopital
+                {
+                    FileAttente = fileAttente
+                };
+
+                using (var fs = new FileStream(cheminFichier, FileMode.Create))
+                {
+                    var serializer = new XmlSerializer(typeof(EtatHopital));
+                    serializer.Serialize(fs, etat);
+                }
+
+                Console.WriteLine("[Hopital] État sauvegardé.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la sauvegarde : {ex.Message}");
+            }
+
+        }
+        public void ChargerEtat(string cheminFichier)
+        {
+            try
+            {
+                if (!File.Exists(cheminFichier))
+                {
+                    Console.WriteLine("[Hopital] Aucun fichier de sauvegarde trouvé. Nouvelle file d’attente.");
+                    return;
+                }
+
+                using (var fs = new FileStream(cheminFichier, FileMode.Open))
+                {
+                    var serializer = new XmlSerializer(typeof(EtatHopital));
+                    var etat = (EtatHopital)serializer.Deserialize(fs);
+
+                    fileAttente = etat.FileAttente ?? new List<Patient>();
+                }
+
+                Console.WriteLine("[Hopital] État restauré depuis le fichier.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors du chargement : {ex.Message}");
+            }
+        }
+
     }
 }

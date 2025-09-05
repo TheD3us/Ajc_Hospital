@@ -9,3 +9,9 @@ C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.csproj.CoreCompileInputs.cache
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.dll
 C:\Users\utilisateur\Documents\.net\exos\TP-hopital\Ajc_Hospital\DllVisites\obj\Debug\DllVisites.pdb
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\bin\Debug\DllVisites.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\bin\Debug\DllVisites.pdb
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\obj\Debug\DllVisites.csprojAssemblyReference.cache
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\obj\Debug\DllVisites.csproj.CoreCompileInputs.cache
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\obj\Debug\DllVisites.dll
+C:\Users\mikae\Desktop\OpenClassrooms\Atelier_Recherche\POEC\gitProjet3\DllVisites\obj\Debug\DllVisites.pdb
