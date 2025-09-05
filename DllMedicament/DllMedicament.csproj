@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E879EE89-65A7-4C44-9971-916B8CB1F88C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MenuHopital</RootNamespace>
-    <AssemblyName>MenuHopital</AssemblyName>
+    <ProjectGuid>{49D6AD0A-00B7-400E-ACFB-47F62F0978E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DllMedicament</RootNamespace>
+    <AssemblyName>DllMedicament</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,33 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\LigneOrdonnance.cs" />
+    <Compile Include="Model\Medicament.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{114951d1-3c89-48ff-a341-ee7ac53f9ae3}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DllAuth\DllAuthentification\DllAuthentification.csproj">
-      <Project>{B9A5B2D9-5CD8-4FCE-932E-9040ECDD8208}</Project>
-      <Name>DllAuthentification</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DllMedicament\DllMedicament.csproj">
-      <Project>{49d6ad0a-00b7-400e-acfb-47f62f0978e6}</Project>
-      <Name>DllMedicament</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DllPatient\DllPatient.csproj">
-      <Project>{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}</Project>
-      <Name>DllPatient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{2A09C7D3-8EE7-4066-929E-442F503E45E3}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

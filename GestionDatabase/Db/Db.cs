@@ -9,6 +9,7 @@ using DllVisites;
 using DllPatient;
 using DllPatient.Model;
 using DllAuthentification.Model;
+using DllMedicament.Model;
 
 namespace GestionDatabase.Db
 {
@@ -304,6 +305,66 @@ namespace GestionDatabase.Db
             sqlCo.Close();
             return auth;
         }
+
+        public List<Medicament> SelectAllMedicaments()
+        {
+            List<Medicament> meds = new List<Medicament>();
+            sqlCmd.CommandText = @"SELECT idMedicaments, nom, prix, quantite FROM Medicaments";
+            sqlCmd.Parameters.Clear();
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                meds.Add(new Medicament
+                {
+                    IdMedicaments = Convert.ToInt32(reader["idMedicaments"]),
+                    Nom = reader["nom"].ToString(),
+                    Prix = Convert.ToInt32(reader["prix"]),
+                    Quantite = Convert.ToInt32(reader["quantite"])
+                });
+            }
+            sqlCo.Close();
+            return meds;
+        }
+
+        public Medicament SelectMedicamentById(int id)
+        {
+            Medicament med = null;
+
+            sqlCmd.CommandText = @"SELECT idMedicaments, nom, prix, quantite FROM Medicaments WHERE idMedicaments = @id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            sqlCo.Open();
+            var reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                med = new Medicament
+                {
+                    IdMedicaments = Convert.ToInt32(reader["idMedicaments"]),
+                    Nom = reader["nom"].ToString(),
+                    Prix = Convert.ToInt32(reader["prix"]),
+                    Quantite = Convert.ToInt32(reader["quantite"])
+                };
+            }
+
+            sqlCo.Close();
+            return med;
+        }
+
+        public void UpdateMedicamentStock(int id, int nouvelleQuantite)
+        {
+            sqlCmd.CommandText = @"UPDATE Medicaments SET quantite = @qte WHERE idMedicaments = @id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@qte", nouvelleQuantite);
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
     }
 }
 

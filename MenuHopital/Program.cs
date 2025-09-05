@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DllAuthentification.Model;
+using DllMedicament.Model;
 using DllPatient.Model;
 using Service;
 using System;
@@ -164,6 +165,7 @@ namespace MenuHopital
             Console.WriteLine("4 - Libérer Salle");
             Console.WriteLine("5 - Sauvegarder visites");
             Console.WriteLine("6 - Deconnexion");
+            Console.WriteLine("7 - Créé Ordonnance");
             Console.Write("Choix : ");
             var choix = Console.ReadLine();
 
@@ -194,10 +196,61 @@ namespace MenuHopital
                     Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
                     MenuDepart();
                     break;
+                case "7":
+                    CreerOrdonnance(auth);
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+
                 default:
                     Console.WriteLine("Choix invalide.");
                     break;
             }
         }
+        public static void CreerOrdonnance(Authentification auth)
+        {
+            MedicamentDao dao = new MedicamentDao();
+            var listeMedicaments = dao.GetAllMedicaments();
+            List<LigneOrdonnance> ordonnance = new List<LigneOrdonnance>();
+
+            bool continuer = true;
+            while (continuer)
+            {
+                Console.WriteLine("=== Liste des médicaments ===");
+                foreach (var m in listeMedicaments)
+                    Console.WriteLine(m);
+
+                Console.Write("ID du médicament (0 pour terminer) : ");
+                int id = int.Parse(Console.ReadLine());
+                if (id == 0) break;
+
+                var med = dao.GetMedicamentById(id);
+                if (med == null)
+                {
+                    Console.WriteLine("Médicament introuvable.");
+                    continue;
+                }
+
+                Console.Write($"Quantité (max {med.Quantite}) : ");
+                int qte = int.Parse(Console.ReadLine());
+                if (qte <= 0 || qte > med.Quantite)
+                {
+                    Console.WriteLine("Quantité invalide.");
+                    continue;
+                }
+
+                ordonnance.Add(new LigneOrdonnance { Medicament = med, Quantite = qte });
+
+                // Mise à jour du stock
+                dao.UpdateStock(med.IdMedicaments, med.Quantite - qte);
+            }
+
+            // Calcul du prix total
+            int totalMedocs = ordonnance.Sum(l => l.PrixTotal);
+            Console.WriteLine($"Prix total des médicaments : {totalMedocs} euro");
+
+            string champOrdo = string.Join("/", ordonnance.Select(l => $"{l.Quantite}-{l.Medicament.IdMedicaments}"));
+            Console.WriteLine($"Champ ordonnance : {champOrdo}");
+        }
+
     }
 }
