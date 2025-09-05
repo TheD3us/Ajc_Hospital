@@ -39,6 +39,10 @@ INSERT INTO Authentification (login, password, nom, metier) VALUES
 ('med1', 'pass123', 'Dupont', 1),
 ('med2', 'pass123', 'Dupond', 2);
 
+​INSERT INTO Authentification (login, password, nom, metier) VALUES
+('admin1', 'pass123', 'Premier', -1),
+('admin2', 'pass123', 'Secondaire', -1);
+
 
 INSERT INTO Visites (idpatient, date, medecin, num_salle, tarif) VALUES
 (1, '2025-09-01', 2, 1, 23),
