@@ -49,6 +49,10 @@ namespace MenuHopital
                         MenuMedecin(auth, null);
                         break;
 
+                    case -1:
+                        MenuAdmin(auth);
+                        break;
+
                     default:
                         Console.WriteLine("Metier inconnu --- Deconnexion");
                         auth = null;
@@ -191,5 +195,164 @@ namespace MenuHopital
                     break;
             }
         }
+
+        public static void MenuAdmin(Authentification auth)
+        {
+            Hospital H = Hospital.Hopital();
+
+            Console.WriteLine("Bonjour Admin " + auth.Nom);
+            Console.WriteLine("-------------------Menu Admin-------------------");
+            Console.WriteLine("1 - Gérer les Patients");
+            Console.WriteLine("2 - Gérer les secrétaires et médecins");
+            Console.WriteLine("3 - Déconnexion");
+            Console.WriteLine("Choix:");
+            var choix = Console.ReadLine();
+
+            switch (choix)
+            {
+                case "1":
+                    MenuGestionPatients(auth);
+                    break;
+                case "2":
+                    MenuGestionPersonnel(auth);
+                    break;
+                case "3":
+                    MenuDepart();
+                    break;
+                default:
+                    Console.WriteLine("Choix invalide.");
+                    break;
+            }
+        }
+
+
+        private static void MenuGestionPatients(Authentification auth)
+        {
+            Console.WriteLine("---- Gestion des Patients ----");
+            Console.WriteLine("1 - Supprimer un patient");
+            Console.WriteLine("2 - Modifier un patient");
+            Console.WriteLine("3 - Ajouter un patient");
+            Console.WriteLine("4 - Retour");
+            Console.Write("Choix: ");
+            var choix = Console.ReadLine();
+
+            var patientDao = new PatientDao();
+
+            switch (choix)
+            {
+                case "1": 
+                    Console.Write("ID du patient à supprimer: ");
+                    int idSup = int.Parse(Console.ReadLine());
+                    patientDao.DeletePatient(idSup);
+                    Console.WriteLine("Patient supprimé.");
+                    break;
+
+                case "2":
+                    Console.Write("ID du patient à modifier: ");
+                    int idModif = int.Parse(Console.ReadLine());
+                    var patientModif = patientDao.GetPatientById(idModif);
+                    if (patientModif == null)
+                    {
+                        Console.WriteLine("Patient introuvable.");
+                        break;
+                    }
+                    Console.Write("Nom (" + patientModif.Nom + "): ");
+                    patientModif.Nom = Console.ReadLine();
+                    Console.Write("Prénom (" + patientModif.Prenom + "): ");
+                    patientModif.Prenom = Console.ReadLine();
+                    Console.Write("Âge (" + patientModif.Age + "): ");
+                    patientModif.Age = int.Parse(Console.ReadLine());
+                    Console.Write("Adresse (" + patientModif.Adresse + "): ");
+                    patientModif.Adresse = Console.ReadLine();
+                    Console.Write("Téléphone (" + patientModif.Telephone + "): ");
+                    patientModif.Telephone = Console.ReadLine();
+                    patientDao.UpdatePatient(patientModif);
+                    Console.WriteLine("Patient mis à jour.");
+                    break;
+
+                case "3": 
+                    var nouveau = new Patient();
+                    Console.Write("ID (Numéro sécu): ");
+                    nouveau.Id = int.Parse(Console.ReadLine());
+                    Console.Write("Nom: ");
+                    nouveau.Nom = Console.ReadLine();
+                    Console.Write("Prénom: ");
+                    nouveau.Prenom = Console.ReadLine();
+                    Console.Write("Âge: ");
+                    nouveau.Age = int.Parse(Console.ReadLine());
+                    Console.Write("Adresse: ");
+                    nouveau.Adresse = Console.ReadLine();
+                    Console.Write("Téléphone: ");
+                    nouveau.Telephone = Console.ReadLine();
+                    patientDao.AddPatient(nouveau);
+                    Console.WriteLine("Patient ajouté.");
+                    break;
+
+                case "4":
+                    MenuAdmin(auth);
+                    return;
+            }
+
+            MenuGestionPatients(auth);
+        }
+
+        private static void MenuGestionPersonnel(Authentification auth)
+        {
+            Console.WriteLine("---- Gestion du Personnel ----");
+            Console.WriteLine("1 - Créer un médecin");
+            Console.WriteLine("2 - Créer une secrétaire");
+            Console.WriteLine("3 - Supprimer un médecin");
+            Console.WriteLine("4 - Supprimer une secrétaire");
+            Console.WriteLine("5 - Retour");
+            Console.Write("Choix: ");
+            var choix = Console.ReadLine();
+
+            var authDao = new AuthentificationDao();
+
+            switch (choix)
+            {
+                case "1":
+                    CreerUtilisateur(authDao, metier: 1);
+                    break;
+                case "2":
+                    CreerUtilisateur(authDao, metier: 0);
+                    break;
+                case "3":
+                    SupprimerUtilisateur(authDao, metier: 1);
+                    break;
+                case "4":
+                    SupprimerUtilisateur(authDao, metier: 0);
+                    break;
+                case "5":
+                    MenuAdmin(auth);
+                    return;
+            }
+
+            MenuGestionPersonnel(auth);
+        }
+
+        private static void CreerUtilisateur(AuthentificationDao dao, int metier)
+        {
+            var nouvelUtilisateur = new Authentification();
+            Console.Write("Nom: ");
+            nouvelUtilisateur.Nom = Console.ReadLine();
+            Console.Write("Login: ");
+            nouvelUtilisateur.Login = Console.ReadLine();
+            Console.Write("Mot de passe: ");
+            nouvelUtilisateur.Password = Console.ReadLine();
+            nouvelUtilisateur.Metier = metier;
+            dao.AddUtilisateur(nouvelUtilisateur);
+            Console.WriteLine((metier == 1 ? "Médecin" : "Secrétaire") + " créé avec succès.");
+        }
+
+        private static void SupprimerUtilisateur(AuthentificationDao dao, int metier)
+        {
+            Console.Write("ID de l'utilisateur à supprimer: ");
+            int id = int.Parse(Console.ReadLine());
+            dao.DeleteUtilisateur(id);
+            Console.WriteLine((metier == 1 ? "Médecin" : "Secrétaire") + " supprimé.");
+        }
+        
+
     }
 }

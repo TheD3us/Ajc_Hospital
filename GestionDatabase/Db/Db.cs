@@ -186,6 +186,17 @@ namespace GestionDatabase.Db
             sqlCo.Close();
         }
 
+        public void DeletePatient(int id)
+        {
+            sqlCmd.CommandText = "DELETE FROM patients WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
 
         //Partie Authentification
         // Authentifie un utilisateur par login et mot de passe.
@@ -303,6 +314,34 @@ namespace GestionDatabase.Db
 
             sqlCo.Close();
             return auth;
+        }
+
+        public void InsertAuthentification(Authentification auth)
+        {
+            sqlCmd.CommandText = @"
+        INSERT INTO Authentification (login, password, nom, metier)
+        VALUES (@login, @password, @nom, @metier)";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@login", auth.Login);
+            sqlCmd.Parameters.AddWithValue("@password", auth.Password);
+            sqlCmd.Parameters.AddWithValue("@nom", auth.Nom);
+            sqlCmd.Parameters.AddWithValue("@metier", auth.Metier);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
+        }
+
+        public void DeleteAuthentification(int id)
+        {
+            sqlCmd.CommandText = "DELETE FROM Authentification WHERE id=@id";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            sqlCo.Open();
+            sqlCmd.ExecuteNonQuery();
+            sqlCo.Close();
         }
     }
 }

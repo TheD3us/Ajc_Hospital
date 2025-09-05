@@ -46,5 +46,11 @@ namespace DAO
         {
             db.UpdatePatient(patient);
         }
+        
+        // Supprimer un patient existant
+        public void DeletePatient(int id)
+        {
+            db.DeletePatient(id);
+        }
     }
 }
