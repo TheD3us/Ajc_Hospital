@@ -37,6 +37,11 @@ namespace DAO
             db.UpdateVisite(IdPatient, Date, Medecin, NumSalle, Tarif, Id);
         }
 
+        public List<Visites> SelectVisitesByMedecin(int IdMedecin)
+        {
+            return db.SelectVisitesByMedecin(IdMedecin);
+        }
+
 
     }
 }

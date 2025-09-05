@@ -25,5 +25,6 @@ namespace Service
             else
                 Console.WriteLine($"[Médecin {Nom} - Salle {Salle}] Prochain patient : {patient.Nom} {patient.Prenom}");
         }
+
     }
 }

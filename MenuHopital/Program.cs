@@ -157,7 +157,8 @@ namespace MenuHopital
             Console.WriteLine("3 - Faire entrer patient suivant");
             Console.WriteLine("4 - Libérer Salle");
             Console.WriteLine("5 - Sauvegarder visites");
-            Console.WriteLine("6 - Deconnexion");
+            Console.WriteLine("6 - Historique Visites");
+            Console.WriteLine("7 - Deconnexion");
             Console.Write("Choix : ");
             var choix = Console.ReadLine();
 
@@ -184,6 +185,10 @@ namespace MenuHopital
                     MenuMedecin(auth, salleAttribuee);
                     break;
                 case "6":
+                    salleAttribuee.VoirHistoriqueVisites();
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "7":
                     MenuDepart();
                     break;
                 default:
