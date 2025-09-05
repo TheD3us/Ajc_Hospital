@@ -69,7 +69,8 @@ namespace MenuHopital
             Console.WriteLine("1 - Reception patient");
             Console.WriteLine("2 - Afficher file d'attente");
             Console.WriteLine("3 - Afficher prochain patient");
-            Console.WriteLine("4 - Deconnexion");
+            Console.WriteLine("4 - Modifier patient");
+            Console.WriteLine("5 - Deconnexion");
 
             choix = Convert.ToInt16(Console.ReadLine());
             switch(choix)
@@ -86,6 +87,10 @@ namespace MenuHopital
                     MenuSecretaire(auth);
                     break;
                 case 4:
+                    H.ModifierPatientParSecretaire();
+                    MenuSecretaire(auth);
+                    break;
+                case 5:
                     Console.WriteLine("Au revoir " + auth.Nom);
                     auth = null;
                     MenuDepart();
