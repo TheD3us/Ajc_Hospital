@@ -42,9 +42,9 @@ namespace DAO
         }
 
         // Mettre à jour un patient existant
-        public void UpdatePatient(Patient patient)
+        public void UpdatePatient(string Telephone, string Adresse, int Id)
         {
-            db.UpdatePatient(patient);
+            db.UpdatePatient(Telephone, Adresse, Id);
         }
     }
 }

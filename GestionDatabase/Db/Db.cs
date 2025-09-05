@@ -199,16 +199,22 @@ namespace GestionDatabase.Db
             sqlCo.Close();
         }
 
-        public void UpdatePatient(Patient patient)
+        public void UpdatePatient(string Telephone, string Adresse, int Id)
         {
-            sqlCmd.CommandText = "UPDATE patients SET nom=@nom, prenom=@prenom, age=@age, adresse=@adresse, telephone=@telephone WHERE id=@id";
+            Patient patient = SelectPatientById(Id);
+            sqlCmd.CommandText = "UPDATE patients SET adresse=@adresse, telephone=@telephone WHERE id=@id";
             sqlCmd.Parameters.Clear();
             sqlCmd.Parameters.AddWithValue("@id", patient.Id);
-            sqlCmd.Parameters.AddWithValue("@nom", patient.Nom);
-            sqlCmd.Parameters.AddWithValue("@prenom", patient.Prenom);
-            sqlCmd.Parameters.AddWithValue("@age", patient.Age);
-            sqlCmd.Parameters.AddWithValue("@adresse", patient.Adresse);
-            sqlCmd.Parameters.AddWithValue("@telephone", patient.Telephone);
+            if(Adresse == null)
+            {
+                Adresse = patient.Adresse;
+            }
+            sqlCmd.Parameters.AddWithValue("@adresse", Adresse);
+            if(Telephone == null)
+            {
+                Telephone = patient.Telephone;
+            }
+            sqlCmd.Parameters.AddWithValue("@telephone", Telephone);
 
             sqlCo.Open();
             sqlCmd.ExecuteNonQuery();

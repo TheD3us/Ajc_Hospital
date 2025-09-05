@@ -1,4 +1,5 @@
-﻿using DllPatient.Model;
+﻿using DAO;
+using DllPatient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,48 @@ namespace Service
             NotifierSecretaires();
 
             return patient;
+        }
+
+        //Modifier Patient
+        public void ModifierPatientParSecretaire()
+        {
+            string Telephone=null;
+            string Adresse=null;
+            int Id;
+            int choix=-1;
+            Console.WriteLine("Veuillez entrer le numéro de sécurité sociale du patient à modifier");
+            Console.WriteLine("0 - revenir au menu précédent");
+            Id = Convert.ToInt32(Console.ReadLine());
+            if (Id != 0 && new PatientDao().PatientExists(Id))
+            {
+                while(choix != 0)
+                {
+                    Console.WriteLine("Vous souhaitez modifier :");
+                    Console.WriteLine("1 - Le téléphone");
+                    Console.WriteLine("2 - L'adresse");
+                    choix = Convert.ToInt32(Console.ReadLine());
+                    switch(choix)
+                    {
+                        case 1:
+                            Console.WriteLine("Nouveau téléphone :");
+                            Telephone = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.WriteLine("Nouvelle adresse :");
+                            Adresse = Console.ReadLine();
+                            break;
+                        default:
+                            Console.WriteLine("Choix erroné");
+                            break;
+                    }
+                }
+                
+                new PatientDao().UpdatePatient(Telephone, Adresse, Id);
+            }
+            if (Id != 0 && !new PatientDao().PatientExists(Id))
+            {
+                Console.WriteLine("Ce patient est absent de la base");
+            }
         }
 
         public Patient ProchainPatient()
