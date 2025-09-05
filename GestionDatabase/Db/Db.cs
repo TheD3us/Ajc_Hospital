@@ -56,6 +56,104 @@ namespace GestionDatabase.Db
             return ListeVisite;
         }
 
+        public List<Visites> GetVisitesBypatientOrderByDate(int patientId)
+        {
+            List<Visites> visites = new List<Visites>();
+
+            sqlCmd.CommandText = @"
+                SELECT idpatient, date, medecin, num_salle, tarif
+                FROM visites
+                WHERE idpatient = @patientId
+                ORDER BY date ASC
+            ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()),
+                                        Convert.ToDateTime(reader["date"].ToString()),
+                                        Convert.ToInt32(reader["medecin"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
+                                        Convert.ToDouble(reader["tarif"].ToString())
+                                        );
+                visites.Add(v);
+            }
+            sqlCo.Close();
+            return visites;
+        }
+
+        public List<Visites> GetVisitesByPatientOrderByMedecin(int patientId)
+        {
+            List<Visites> visites = new List<Visites>();
+
+            sqlCmd.CommandText = @"
+                SELECT v.idpatient, v.date, v.medecin, v.num_salle, v.tarif
+                FROM visites v
+                INNER JOIN Authentification a ON v.medecin = a.id
+                WHERE idpatient = @patientId
+                ORDER BY a.nom ASC
+            ";
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+
+            var reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Visites v = new Visites(Convert.ToInt32(reader["idpatient"].ToString()),
+                                        Convert.ToDateTime(reader["date"].ToString()),
+                                        Convert.ToInt32(reader["medecin"].ToString()),
+                                        Convert.ToInt32(reader["num_salle"].ToString()),
+                                        Convert.ToDouble(reader["tarif"].ToString())
+                                        );
+                visites.Add(v);
+            }
+            sqlCo.Close();
+            return visites;
+        }
+
+        public int CountVisitesByPatientBetweenDates(int patientId, DateTime dateDebut, DateTime dateFin)
+        {
+            sqlCmd.CommandText = @"
+            SELECT COUNT(*) AS nb
+            FROM visites
+            WHERE idpatient = @patientId
+            AND date BETWEEN @dateDebut AND @dateFin
+            ";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+            sqlCmd.Parameters.AddWithValue("@dateDebut", dateDebut);
+            sqlCmd.Parameters.AddWithValue("@dateFin", dateFin);
+
+            sqlCo.Open();
+            int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+            sqlCo.Close();
+            return count;
+        }
+
+        public int CountVisitesByPatient(int patientId)
+        {
+            sqlCmd.CommandText = @"
+            SELECT COUNT(*) AS nb
+            FROM visites
+            WHERE idpatient = @patientId
+            ";
+
+            sqlCmd.Parameters.Clear();
+            sqlCmd.Parameters.AddWithValue("@patientId", patientId);
+
+            sqlCo.Open();
+            int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+            sqlCo.Close();
+            return count;
+        }
+
         public void InsertVisite(int IdPatient, DateTime Date, int Medecin, int NumSalle, double Tarif)
         {
 

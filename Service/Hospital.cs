@@ -86,6 +86,7 @@ namespace Service
             return prochain;
         }
 
+
         public void AddMedecin(IObserverMedecin medecin)
         {
             medecins.Add(medecin);

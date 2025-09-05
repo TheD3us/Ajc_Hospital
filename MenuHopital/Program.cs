@@ -1,6 +1,7 @@
 ﻿using DAO;
 using DllAuthentification.Model;
 using DllPatient.Model;
+using DllVisites;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -70,10 +71,11 @@ namespace MenuHopital
 
             Console.WriteLine("Bonjour " + auth.Nom);
             Console.WriteLine("-------------------Menu Secretaire-------------------");
-            Console.WriteLine("1 - Reception patient");
+            Console.WriteLine("1 - Ajouter un patient");
             Console.WriteLine("2 - Afficher file d'attente");
             Console.WriteLine("3 - Afficher prochain patient");
-            Console.WriteLine("4 - Deconnexion");
+            Console.WriteLine("4 - Gérer les visites");
+            Console.WriteLine("5 - Deconnexion");
 
             choix = Convert.ToInt16(Console.ReadLine());
             switch(choix)
@@ -90,6 +92,10 @@ namespace MenuHopital
                     MenuSecretaire(auth);
                     break;
                 case 4:
+                    MenuVisitesSecretaire(auth);
+                    break;
+                
+                case 5:
                     Console.WriteLine("Au revoir " + auth.Nom);
                     auth = null;
                     MenuDepart();
@@ -99,7 +105,59 @@ namespace MenuHopital
                     MenuSecretaire(auth);
                     break;
             }
+        }
 
+        public static void MenuVisitesSecretaire(Authentification auth)
+        {
+            VisiteDao visitesDao = new VisiteDao();
+
+            Console.WriteLine("------ Gestion des visites ------");
+            Console.WriteLine("1 - Liste des visites par date");
+            Console.WriteLine("2 - Liste des visites par médecin");
+            Console.WriteLine("3 - Nombre total de visites");
+            Console.WriteLine("4 - Nombre de visites entre deux dates");
+            Console.WriteLine("5 - Retour");
+
+            var choix = Console.ReadLine();
+
+            if(choix == "5")
+            {
+                MenuSecretaire(auth);
+            }
+
+            Console.Write("Id du patient : ");
+            int patientId = int.Parse(Console.ReadLine());
+
+            switch (choix)
+            {
+                case "1":
+                    List<Visites>listDate = visitesDao.GetVisitesByPatientOrderByDate(patientId);
+                    foreach (var v in listDate)
+                        Console.WriteLine($"{v.Date} - Médecin {v.Medecin} - Salle {v.NumSalle} - Tarif {v.Tarif}");
+                    break;
+                case "2":
+                    List<Visites> listMedecin = visitesDao.GetVisitesByPatientOrderByMedecin(patientId);
+                    foreach (var v in listMedecin)
+                        Console.WriteLine($"Médecin {v.Medecin} - {v.Date} - Salle {v.NumSalle} - Tarif {v.Tarif}");
+                    break;
+                case "3":
+                    int total = visitesDao.CountVisitesByPatient(patientId);
+                    Console.WriteLine($"Total visites : {total}");
+                    break;
+                case "4":
+                    Console.Write("Date début (yyyy-MM-dd) : ");
+                    DateTime d1 = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Date fin (yyyy-MM-dd) : ");
+                    DateTime d2 = DateTime.Parse(Console.ReadLine());
+                    int count = visitesDao.CountVisitesByPatientBetweenDates(patientId, d1, d2);
+                    Console.WriteLine($"Visites entre {d1} et {d2} : {count}");
+                    break;
+                default:
+                    Console.WriteLine("Choix invalide");
+                    break;
+            }
+
+            MenuVisitesSecretaire(auth);
         }
 
         public static void AjoutPatient(Authentification auth)

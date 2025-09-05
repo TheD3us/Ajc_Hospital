@@ -37,6 +37,24 @@ namespace DAO
             db.UpdateVisite(IdPatient, Date, Medecin, NumSalle, Tarif, Id);
         }
 
+        public List<Visites> GetVisitesByPatientOrderByDate(int patientId)
+        {
+            return db.GetVisitesBypatientOrderByDate(patientId);
+        }
 
+        public List<Visites> GetVisitesByPatientOrderByMedecin(int patientId)
+        {
+            return db.GetVisitesByPatientOrderByMedecin(patientId);
+        }
+
+        public int CountVisitesByPatient(int patientId)
+        {
+            return db.CountVisitesByPatient(patientId);
+        }
+
+        public int CountVisitesByPatientBetweenDates(int patientId, DateTime dateDebut, DateTime dateFin)
+        {
+            return db.CountVisitesByPatientBetweenDates(patientId, dateDebut, dateFin);
+        }
     }
 }

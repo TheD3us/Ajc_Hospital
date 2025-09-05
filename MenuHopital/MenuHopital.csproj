@@ -62,6 +62,10 @@
       <Project>{196A71E8-BF76-4FC7-8F33-F74B2C08BE06}</Project>
       <Name>DllPatient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DllVisites\DllVisites.csproj">
+      <Project>{360d6104-60cf-4464-b7e4-ba0e83c889f2}</Project>
+      <Name>DllVisites</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{2A09C7D3-8EE7-4066-929E-442F503E45E3}</Project>
       <Name>Service</Name>
