@@ -59,10 +59,6 @@
       <Project>{360D6104-60CF-4464-B7E4-BA0E83C889F2}</Project>
       <Name>DllVisites</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GestionDatabase\GestionDatabase.csproj">
-      <Project>{B3F5881C-5083-4B58-94E3-5C92FBEEDC26}</Project>
-      <Name>GestionDatabase</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
