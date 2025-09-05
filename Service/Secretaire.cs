@@ -33,12 +33,6 @@ namespace Service
             }
         }
 
-        //public void LogArriveePatient(Patient patient)
-        //{
-        //    string chemin = "patients.txt";
-        //    string ligne = $"{patient.Id}\t{DateTime.Now:dd/MM/yyyy HH:mm}";
-        //    File.AppendAllLines(chemin, new[] { ligne });
-        //    Console.WriteLine($"[Secrétaire {Nom}] Arrivée enregistrée dans {chemin} : {ligne}");
-        //}
+        
     }
 }

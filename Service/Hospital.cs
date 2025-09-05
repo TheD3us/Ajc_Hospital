@@ -3,6 +3,7 @@ using DllPatient.Model;
 using DllVisites;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,18 @@ namespace Service
         {
             fileAttente.Add(p);
             Console.WriteLine($"Patient {p.Nom} {p.Prenom} ajouté à la file.");
-
+            LogArriveePatient(p);
             NotifierMedecins();
             NotifierSecretaires();
+        }
+
+        //Ajout d'une trace dans fichier texte
+        public void LogArriveePatient(Patient patient)
+        {
+            string chemin = "../../../patients.txt";
+            string ligne = $"{patient.Id}\t{DateTime.Now:dd/MM/yyyy HH:mm}";
+            File.AppendAllLines(chemin, new[] { ligne });
+            Console.WriteLine($"Arrivée enregistrée dans {chemin} : {ligne}");
         }
 
         public void AfficherFile()
