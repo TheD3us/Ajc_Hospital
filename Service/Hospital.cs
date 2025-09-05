@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DllPatient.Model;
+using DllVisites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,7 @@ namespace Service
                     Console.WriteLine("Vous souhaitez modifier :");
                     Console.WriteLine("1 - Le téléphone");
                     Console.WriteLine("2 - L'adresse");
+                    Console.WriteLine("0 - Quitter et valider");
                     choix = Convert.ToInt32(Console.ReadLine());
                     switch(choix)
                     {
@@ -98,18 +100,46 @@ namespace Service
                             Console.WriteLine("Nouvelle adresse :");
                             Adresse = Console.ReadLine();
                             break;
+                        case 0:
+                            break;
                         default:
                             Console.WriteLine("Choix erroné");
                             break;
                     }
                 }
-                
+                Console.WriteLine("Modifications effectuées");
                 new PatientDao().UpdatePatient(Telephone, Adresse, Id);
             }
             if (Id != 0 && !new PatientDao().PatientExists(Id))
             {
                 Console.WriteLine("Ce patient est absent de la base");
             }
+        }
+
+        //HistoriquePatient
+        public void VoirHistoriqueVisitesPatient()
+        {
+            int IdPatient;
+            List<Visites> ListeHistorique = new List<Visites>();
+            Console.WriteLine("Choisir le patient dont vous voulez voir l'historique");
+            Console.WriteLine("0 - Menu précedent");
+            IdPatient = Convert.ToInt32(Console.ReadLine());
+            if (IdPatient != 0 && new PatientDao().PatientExists(IdPatient))
+            {
+                ListeHistorique = new VisiteDao().SelectVisitesByPatient(IdPatient);
+                foreach (Visites v in ListeHistorique)
+                {
+                    Patient p = new PatientDao().GetPatientById(v.IdPatient);
+
+                    Console.WriteLine(p.Nom + " " + p.Prenom + " - " + v.Date + " tarif : " + v.Tarif);
+                }
+            }
+            if (IdPatient != 0 && !new PatientDao().PatientExists(IdPatient))
+            {
+                Console.WriteLine("Ce patient est absent de la base");
+            }
+
+
         }
 
         public Patient ProchainPatient()
