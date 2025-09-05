@@ -119,6 +119,7 @@ namespace MenuHopital
                     break;
                 case 9:
                     H.NombreVisiteEntreDeuxDate();
+                    MenuSecretaire(auth);
                     break;
                 case 10:
                     Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
