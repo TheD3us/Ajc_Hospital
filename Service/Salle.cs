@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DllAuthentification.Model;
+using DllMedicament.Model;
 using DllPatient.Model;
 using DllVisites;
 using System;
@@ -17,6 +18,7 @@ namespace Service
         private Patient current;
         Hospital H = Hospital.Hopital();
         List<Visites> ListeVisiteEnCours = new List<Visites>();
+        Visites VisiteEnCours = new Visites();
 
         public Salle(int numero, Authentification medecin)
         {
@@ -34,7 +36,6 @@ namespace Service
             {
                 current = p;
                 Console.WriteLine($"[Salle {Numero} - {Medecin}] Nouveau patient : {p.Nom} {p.Prenom}");
-                SauvegarderVisites(p);
             }
             else
             {
@@ -45,11 +46,24 @@ namespace Service
         //Sauvegarder visites en base
         public void SauvegarderVisites(Patient p)
         {
+            if(VisiteEnCours.Tarif > 0)
+            {
+                VisiteEnCours.Tarif += 23;
+            }
+            else
+            {
+                VisiteEnCours.Tarif = 23;
+            }
+            
             if(p!=null)
             {
-                Visites nouvelleVisite = new Visites(p.Id, DateTime.Now, new AuthentificationDao().GetAuthentificationId(Medecin.Nom, Medecin.Metier),
-                                        Numero, 23);
-                ListeVisiteEnCours.Add(nouvelleVisite);
+                VisiteEnCours.IdPatient = p.Id;
+                VisiteEnCours.Date = DateTime.Now;
+                VisiteEnCours.Medecin = new AuthentificationDao().GetAuthentificationId(Medecin.Nom, Medecin.Metier);
+                VisiteEnCours.NumSalle = Numero;
+
+                ListeVisiteEnCours.Add(VisiteEnCours);
+                VisiteEnCours = new Visites();
             }
             
             if (ListeVisiteEnCours.Count >= 5 || p == null)
@@ -85,9 +99,13 @@ namespace Service
                 Console.WriteLine($"[Salle {Numero}] Aucun patient à libérer.");
                 return;
             }
-
-            Console.WriteLine($"[Salle {Numero}] Patient {current.Nom} {current.Prenom} sorti.");
-            current = null;
+            else
+            {
+                SauvegarderVisites(current);
+                Console.WriteLine($"[Salle {Numero}] Patient {current.Nom} {current.Prenom} sorti.");
+                current = null;
+            }
+            
         }
 
         // Affiche la file d’attente actuelle depuis l’hôpital
@@ -104,6 +122,62 @@ namespace Service
             {
                 Console.WriteLine($"[Salle {Numero}] Prochain patient : {prochain.Nom} {prochain.Prenom}");
             }
+        }
+
+        public void CreerOrdonnance(Authentification auth)
+        {
+            if(current == null)
+            {
+                Console.WriteLine("Aucun patient en salle, impossible de créer une ordonnance");
+                return;
+            }
+            else
+            {
+                MedicamentDao dao = new MedicamentDao();
+                var listeMedicaments = dao.GetAllMedicaments();
+                List<LigneOrdonnance> ordonnance = new List<LigneOrdonnance>();
+
+                bool continuer = true;
+                while (continuer)
+                {
+                    Console.WriteLine("=== Liste des médicaments ===");
+                    foreach (var m in listeMedicaments)
+                        Console.WriteLine(m);
+
+                    Console.Write("ID du médicament (0 pour terminer) : ");
+                    int id = int.Parse(Console.ReadLine());
+                    if (id == 0) break;
+
+                    var med = dao.GetMedicamentById(id);
+                    if (med == null)
+                    {
+                        Console.WriteLine("Médicament introuvable.");
+                        continue;
+                    }
+
+                    Console.Write($"Quantité (max {med.Quantite}) : ");
+                    int qte = int.Parse(Console.ReadLine());
+                    if (qte <= 0 || qte > med.Quantite)
+                    {
+                        Console.WriteLine("Quantité invalide.");
+                        continue;
+                    }
+
+                    ordonnance.Add(new LigneOrdonnance { Medicament = med, Quantite = qte });
+
+                    // Mise à jour du stock
+                    dao.UpdateStock(med.IdMedicaments, med.Quantite - qte);
+                }
+
+                // Calcul du prix total
+                int totalMedocs = ordonnance.Sum(l => l.PrixTotal);
+                Console.WriteLine($"Prix total des médicaments : {totalMedocs} euro");
+
+                string champOrdo = string.Join("/", ordonnance.Select(l => $"{l.Quantite}-{l.Medicament.IdMedicaments}"));
+                Console.WriteLine($"Champ ordonnance : {champOrdo}");
+
+                VisiteEnCours.Tarif = totalMedocs;
+            } 
         }
     }
 }

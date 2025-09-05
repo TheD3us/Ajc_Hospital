@@ -17,6 +17,7 @@ namespace MenuHopital
 
         static void Main(string[] args)
         {
+            Hospital.Hopital().ChargerEtat("etatHopital.xml");
             MenuDepart();
         }
 
@@ -120,6 +121,7 @@ namespace MenuHopital
                     H.NombreVisiteEntreDeuxDate();
                     break;
                 case 10:
+                    Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
                     Console.WriteLine("Au revoir " + auth.Nom);
                     auth = null;
                     MenuDepart();
@@ -147,7 +149,7 @@ namespace MenuHopital
             Patient patient = new PatientDao().GetPatientById(NumSecu);
             if (patient == null)
             {
-                Console.WriteLine("Le numéro {patient.id} ne correspond à aucun patient");
+                Console.WriteLine("Le numéro "+NumSecu+" ne correspond à aucun patient");
                 Console.WriteLine("Voulez vous créer un nouveau patient ? Y / N");
                 YesNo = (Console.ReadLine().ToUpper() == "Y");
                 if (YesNo)
@@ -178,6 +180,7 @@ namespace MenuHopital
 
         public static void MenuMedecin(Authentification auth, Salle salleAttribuee)
         {
+
             if (salleAttribuee == null)
             {
                 salleAttribuee = new Salle(auth.Metier, auth);
@@ -192,7 +195,8 @@ namespace MenuHopital
             Console.WriteLine("4 - Libérer Salle");
             Console.WriteLine("5 - Sauvegarder visites");
             Console.WriteLine("6 - Historique Visites");
-            Console.WriteLine("7 - Deconnexion");
+            Console.WriteLine("7 - Créé Ordonnance");
+            Console.WriteLine("8 - Deconnexion");
             Console.Write("Choix : ");
             var choix = Console.ReadLine();
 
@@ -223,6 +227,12 @@ namespace MenuHopital
                     MenuMedecin(auth, salleAttribuee);
                     break;
                 case "7":
+                    salleAttribuee.CreerOrdonnance(auth);
+                    MenuMedecin(auth, salleAttribuee);
+                    break;
+                case "8":
+                    Hospital.Hopital().SauvegarderEtat("etatHopital.xml");
+                    Console.WriteLine("Au revoir Dr. " + auth.Nom);
                     MenuDepart();
                     break;
                 default:
@@ -252,6 +262,7 @@ namespace MenuHopital
                     MenuGestionPersonnel(auth);
                     break;
                 case "3":
+                    Console.WriteLine("Au revoir Big boss " + auth.Nom);
                     MenuDepart();
                     break;
                 default:

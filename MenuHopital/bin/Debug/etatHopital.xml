@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<EtatHopital xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileAttente>
+    <Patient>
+      <Id>2</Id>
+      <Nom>Jean</Nom>
+      <Prenom>Paul</Prenom>
+      <Age>50</Age>
+      <Telephone>0605060708</Telephone>
+      <Adresse>5 avenue Victor Hugo</Adresse>
+    </Patient>
+    <Patient>
+      <Id>1</Id>
+      <Nom>Durant</Nom>
+      <Prenom>Blard</Prenom>
+      <Age>45</Age>
+      <Telephone>0601020304</Telephone>
+      <Adresse>12 rue de la lampisterie</Adresse>
+    </Patient>
+    <Patient>
+      <Id>3</Id>
+      <Nom>Martin</Nom>
+      <Prenom>Sophie</Prenom>
+      <Age>32</Age>
+      <Telephone>0611223344</Telephone>
+      <Adresse>8 place de la Republique</Adresse>
+    </Patient>
+    <Patient>
+      <Id>4</Id>
+      <Nom>KIKI</Nom>
+      <Prenom>KOKO</Prenom>
+      <Age>78</Age>
+      <Telephone>15649/41864</Telephone>
+      <Adresse>7 rue</Adresse>
+    </Patient>
+    <Patient>
+      <Id>1</Id>
+      <Nom>Durant</Nom>
+      <Prenom>Blard</Prenom>
+      <Age>45</Age>
+      <Telephone>0601020304</Telephone>
+      <Adresse>12 rue de la lampisterie</Adresse>
+    </Patient>
+    <Patient>
+      <Id>2</Id>
+      <Nom>Jean</Nom>
+      <Prenom>Paul</Prenom>
+      <Age>50</Age>
+      <Telephone>0605060708</Telephone>
+      <Adresse>5 avenue Victor Hugo</Adresse>
+    </Patient>
+    <Patient>
+      <Id>4</Id>
+      <Nom>KIKI</Nom>
+      <Prenom>KOKO</Prenom>
+      <Age>78</Age>
+      <Telephone>15649/41864</Telephone>
+      <Adresse>7 rue</Adresse>
+    </Patient>
+    <Patient>
+      <Id>3</Id>
+      <Nom>Martin</Nom>
+      <Prenom>Sophie</Prenom>
+      <Age>32</Age>
+      <Telephone>0611223344</Telephone>
+      <Adresse>8 place de la Republique</Adresse>
+    </Patient>
+  </FileAttente>
+</EtatHopital>

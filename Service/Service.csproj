@@ -64,6 +64,10 @@
       <Project>{b9a5b2d9-5cd8-4fce-932e-9040ecdd8208}</Project>
       <Name>DllAuthentification</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DllMedicament\DllMedicament.csproj">
+      <Project>{E9D0585C-197D-4154-9BE7-275D089B5BEA}</Project>
+      <Name>DllMedicament</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DllPatient\DllPatient.csproj">
       <Project>{196a71e8-bf76-4fc7-8f33-f74b2c08be06}</Project>
       <Name>DllPatient</Name>

@@ -26,6 +26,13 @@ FOREIGN KEY (idpatient)REFERENCES Patients(id),
 FOREIGN KEY (medecin)REFERENCES Authentification(id)
 );
 
+CREATE TABLE Medicaments (
+    idMedicaments INT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prix INT NOT NULL,
+    quantite INT NOT NULL
+);
+
 
 INSERT INTO Patients (id, nom, prenom, age, adresse, telephone) VALUES
 (1, 'Durant', 'Blard', 45, '12 rue de la lampisterie', '0601020304'),
@@ -48,3 +55,8 @@ INSERT INTO Visites (idpatient, date, medecin, num_salle, tarif) VALUES
 (1, '2025-09-01', 2, 1, 23),
 (2, '2025-09-02', 3, 2, 23),
 (3, '2025-09-03', 2, 1, 23);
+
+INSERT INTO Medicaments (idMedicaments, nom, prix, quantite) VALUES
+(1, 'Paracétamol 500mg', 2, 100),
+(2, 'Ibuprofène 200mg', 3, 80),
+(3, 'Amoxicilline 500mg', 5, 50);

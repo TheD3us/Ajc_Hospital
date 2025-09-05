@@ -1,0 +1,6 @@
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\bin\Debug\DllMedicament.dll
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\bin\Debug\DllMedicament.pdb
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\obj\Debug\DllMedicament.csprojAssemblyReference.cache
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\obj\Debug\DllMedicament.csproj.CoreCompileInputs.cache
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\obj\Debug\DllMedicament.dll
+C:\Users\Theo\source\repos\Ajc_Hospital\DllMedicament\obj\Debug\DllMedicament.pdb
